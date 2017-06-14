@@ -40,20 +40,18 @@ struct Query {
   }
   
   func validate() throws {
-    if fields.isEmpty {
-      throw QueryError.missingFields
-    }
-  }
+		// Fields also can be optional in some cases
+	}
 
   func build(_ indent: Int = Query.indent) throws -> String {
     var query = "\(" ".times(indent))\(from)\(buildArguments()) {\n"
     if !on.isEmpty {
       query += buildOn(indent + Query.indent)
-    } else {
+    } else if !fields.isEmpty {
       query += buildFields(indent + Query.indent)
     }
     if !subQueries.isEmpty {
-      query += ",\n"
+			if !on.isEmpty || !fields.isEmpty { query += ", \n" }
       query += try buildSubQueries(indent + Query.indent) + "\n" + " ".times(indent) + "}"
     } else {
       query += "\n" + " ".times(indent) + "}"
@@ -70,10 +68,12 @@ struct Query {
   
   private func buildOn(_ indent: Int) -> String {
     var onCollection = on.map {
-      var onCollection = " ".times(indent) + "... on \($0) {\n"
-      onCollection += buildFields(indent + indent / 2) + "\n" + " ".times(indent) + "}"
+      var onCollection = " ".times(indent) + "... on \($0)"
+			if !fields.isEmpty {
+				onCollection += " {\n" + buildFields(indent + indent / 2) + "\n" + " ".times(indent) + "}"
+			}
       return onCollection
-    }.joined(separator: "\n")
+    }.joined(separator: ", \n")
     if withTypename {
       onCollection = " ".times(indent) + "__typename\n" + onCollection
     }
@@ -81,11 +81,11 @@ struct Query {
   }
   
   private func buildFields(_ indent: Int) -> String {
-    return fields.map { " ".times(indent) + $0 }.joined(separator: ",\n")
+    return fields.map { " ".times(indent) + $0 }.joined(separator: ", \n")
   }
 
   private func buildSubQueries(_ indent: Int) throws -> String {
-    return try subQueries.map { try $0.build(indent) }.joined(separator: ",\n")
+    return try subQueries.map { try $0.build(indent) }.joined(separator: ", \n")
   }
 
 }
