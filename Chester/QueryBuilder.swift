@@ -29,7 +29,6 @@ public struct Argument {
       return "\(key): \(value)"
     }
   }
-  
 
 }
 
@@ -68,12 +67,20 @@ public final class QueryBuilder {
   ///
   /// - Parameter arguments: The query args struct(s)
   /// - Throws: `MissingCollection` if no collection is defined before passing in arguments
-  public func with(arguments: Argument...) throws -> Self {
+  public func with(_ arguments: Argument...) throws -> Self {
+    return try with(arguments)
+  }
+	
+  /// Query arguments
+  ///
+  /// - Parameter arguments: The array of query args struct(s)
+  /// - Throws: `MissingCollection` if no collection is defined before passing in arguments
+  public func with(_ arguments: [Argument]) throws -> Self {
     guard let _ = queries.first else { throw QueryError.missingCollection }
     self.queries[0].with(arguments: arguments)
     return self
   }
-  
+	
   /// The fields to retrieve
   ///
   /// - Parameter fields: The field names
@@ -97,7 +104,7 @@ public final class QueryBuilder {
   /// Query a number of collections for the same field
   ///
   /// - Parameter collections: The collection names
-  public func on(collections: String...) -> Self {
+  public func on(_ collections: String...) -> Self {
     queries[0].with(onCollections: collections)
     return self
   }
