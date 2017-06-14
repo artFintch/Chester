@@ -10,6 +10,7 @@
 		371630801E8A975400ABDFEE /* GraphQLSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3716307F1E8A975400ABDFEE /* GraphQLSerializable.swift */; };
 		371630821E8AAD1F00ABDFEE /* testQueryArgsWithSpecialCharacters.json in Resources */ = {isa = PBXBuildFile; fileRef = 371630811E8AAD1F00ABDFEE /* testQueryArgsWithSpecialCharacters.json */; };
 		371630841E8AB18500ABDFEE /* testQueryArgsWithDictionary.json in Resources */ = {isa = PBXBuildFile; fileRef = 371630831E8AB18500ABDFEE /* testQueryArgsWithDictionary.json */; };
+		61A5C2C11EF14AA9005664F4 /* String+Query.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A5C2C01EF14AA9005664F4 /* String+Query.swift */; };
 		944A3AB81CBA70AF00172E0B /* Query.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944A3AB71CBA70AF00172E0B /* Query.swift */; };
 		94A76AAC1CA958E00098F2A9 /* testQueryArgs.json in Resources */ = {isa = PBXBuildFile; fileRef = 94A76AAB1CA958E00098F2A9 /* testQueryArgs.json */; };
 		94A76AAF1CA98BD80098F2A9 /* testQueryWithMultipleRootFields.json in Resources */ = {isa = PBXBuildFile; fileRef = 94A76AAE1CA98BD80098F2A9 /* testQueryWithMultipleRootFields.json */; };
@@ -18,7 +19,7 @@
 		94AE4D571CA81B250079DD8D /* Chester.h in Headers */ = {isa = PBXBuildFile; fileRef = 94AE4D561CA81B250079DD8D /* Chester.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		94AE4D5E1CA81B250079DD8D /* Chester.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94AE4D531CA81B250079DD8D /* Chester.framework */; };
 		94AE4D631CA81B250079DD8D /* QueryBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AE4D621CA81B250079DD8D /* QueryBuilderTests.swift */; };
-		94AE4D6E1CA81C8C0079DD8D /* QueryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AE4D6D1CA81C8C0079DD8D /* QueryBuilder.swift */; };
+		94AE4D6E1CA81C8C0079DD8D /* QueryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AE4D6D1CA81C8C0079DD8D /* QueryBuilder.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		94AE4D701CA820190079DD8D /* testQueryWithFields.json in Resources */ = {isa = PBXBuildFile; fileRef = 94AE4D6F1CA820190079DD8D /* testQueryWithFields.json */; };
 		94AE4D721CA8260F0079DD8D /* testQueryWithSubQuery.json in Resources */ = {isa = PBXBuildFile; fileRef = 94AE4D711CA8260F0079DD8D /* testQueryWithSubQuery.json */; };
 		94AE4D741CA82ACD0079DD8D /* testQueryWithNestedSubQueries.json in Resources */ = {isa = PBXBuildFile; fileRef = 94AE4D731CA82ACC0079DD8D /* testQueryWithNestedSubQueries.json */; };
@@ -40,6 +41,7 @@
 		3716307F1E8A975400ABDFEE /* GraphQLSerializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphQLSerializable.swift; sourceTree = "<group>"; };
 		371630811E8AAD1F00ABDFEE /* testQueryArgsWithSpecialCharacters.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = testQueryArgsWithSpecialCharacters.json; sourceTree = "<group>"; };
 		371630831E8AB18500ABDFEE /* testQueryArgsWithDictionary.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = testQueryArgsWithDictionary.json; sourceTree = "<group>"; };
+		61A5C2C01EF14AA9005664F4 /* String+Query.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Query.swift"; sourceTree = "<group>"; };
 		944A3AB71CBA70AF00172E0B /* Query.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Query.swift; sourceTree = "<group>"; };
 		94A76AAB1CA958E00098F2A9 /* testQueryArgs.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = testQueryArgs.json; sourceTree = "<group>"; };
 		94A76AAE1CA98BD80098F2A9 /* testQueryWithMultipleRootFields.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = testQueryWithMultipleRootFields.json; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				94AE4D6D1CA81C8C0079DD8D /* QueryBuilder.swift */,
 				944A3AB71CBA70AF00172E0B /* Query.swift */,
 				3716307F1E8A975400ABDFEE /* GraphQLSerializable.swift */,
+				61A5C2C01EF14AA9005664F4 /* String+Query.swift */,
 			);
 			path = Chester;
 			sourceTree = "<group>";
@@ -187,7 +190,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Jan Gorman";
 				TargetAttributes = {
 					94AE4D521CA81B250079DD8D = {
@@ -251,8 +254,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				944A3AB81CBA70AF00172E0B /* Query.swift in Sources */,
 				94AE4D6E1CA81C8C0079DD8D /* QueryBuilder.swift in Sources */,
+				944A3AB81CBA70AF00172E0B /* Query.swift in Sources */,
+				61A5C2C11EF14AA9005664F4 /* String+Query.swift in Sources */,
 				371630801E8A975400ABDFEE /* GraphQLSerializable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -290,11 +294,12 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -339,11 +344,12 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -371,6 +377,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -390,6 +397,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
