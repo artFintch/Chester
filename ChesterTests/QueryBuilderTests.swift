@@ -5,6 +5,8 @@
 import XCTest
 @testable import Chester
 
+// TODO: Rewrite tests
+
 class QueryBuilderTests: XCTestCase {
 
   fileprivate func loadExpectationForTest(_ test: String) -> String {
@@ -67,7 +69,7 @@ class QueryBuilderTests: XCTestCase {
     XCTAssertThrowsError(try QueryBuilder().build())
     XCTAssertThrowsError(try QueryBuilder().with(fields: "id").build())
     XCTAssertThrowsError(try QueryBuilder().from("foo").build())
-    XCTAssertThrowsError(try QueryBuilder().with(arguments: Argument(key: "key", value: "value")).build())
+    XCTAssertThrowsError(try QueryBuilder().with(Argument(key: "key", value: "value")).build())
     
     let subQuery = try! QueryBuilder().from("foo").with(fields: "foo")
     
@@ -77,7 +79,7 @@ class QueryBuilderTests: XCTestCase {
   func testQueryArgs() {
     let query = try! QueryBuilder()
       .from("posts")
-      .with(arguments: Argument(key: "id", value: 4), Argument(key: "author", value: "Chester"))
+      .with(Argument(key: "id", value: 4), Argument(key: "author", value: "Chester"))
       .with(fields: "id", "title")
       .build()
     
@@ -89,7 +91,7 @@ class QueryBuilderTests: XCTestCase {
   func testQueryArgsWithSpecialCharacters() {
     let query = try! QueryBuilder()
       .from("posts")
-      .with(arguments: Argument(key: "id", value: 4), Argument(key: "author", value: "\tIs this an \"emoji\"? 👻 \r\n(y\\n)Special\u{8}\u{c}\u{4}\u{1b}"))
+      .with(Argument(key: "id", value: 4), Argument(key: "author", value: "\tIs this an \"emoji\"? 👻 \r\n(y\\n)Special\u{8}\u{c}\u{4}\u{1b}"))
       .with(fields: "id", "title")
       .build()
     
@@ -101,7 +103,7 @@ class QueryBuilderTests: XCTestCase {
   func testQueryArgsWithDictionary() {
     let query = try! QueryBuilder()
       .from("posts")
-      .with(arguments: Argument(key: "id", value: 4), Argument(key: "filter", value: [["author": "Chester", "labels": ["recipes"]],["author": "Iskander"]]))
+      .with(Argument(key: "id", value: 4), Argument(key: "filter", value: [["author": "Chester", "labels": ["recipes"]],["author": "Iskander"]]))
       .with(fields: "id", "title")
       .build()
     
@@ -136,7 +138,7 @@ class QueryBuilderTests: XCTestCase {
   func testQueryWithMultipleRootAndSubQueries() {
     let avatarQuery = try! QueryBuilder()
       .from("avatars")
-      .with(arguments: Argument(key: "width", value: 100))
+      .with(Argument(key: "width", value: 100))
       .with(fields: "url")
     let query = try! QueryBuilder()
       .from("posts", fields: ["id"], subQueries: [avatarQuery])
@@ -151,8 +153,8 @@ class QueryBuilderTests: XCTestCase {
   func testQueryOn() {
     let query = try! QueryBuilder()
       .from("search")
-      .with(arguments: Argument(key: "text", value: "an"))
-      .on(collections: "Human", "Droid")
+      .with(Argument(key: "text", value: "an"))
+      .on("Human", "Droid")
       .with(fields: "name")
       .build()
     
@@ -164,8 +166,8 @@ class QueryBuilderTests: XCTestCase {
   func testQueryOnWithTypename() {
     let query = try! QueryBuilder()
       .from("search")
-      .with(arguments: Argument(key: "text", value: "an"))
-      .on(collections: "Human", "Droid")
+      .with(Argument(key: "text", value: "an"))
+      .on("Human", "Droid")
       .withTypename()
       .with(fields: "name")
       .build()
