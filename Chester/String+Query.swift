@@ -11,6 +11,6 @@ import Foundation
 public extension String {
 	
 	var flatQuery: String {
-		return replacingOccurrences(of: "(\\n|  )*", with: "", options: .regularExpression)
+		return replacingOccurrences(of: "(\\n|  |\\t)*", with: "", options: .regularExpression)
 	}
 }

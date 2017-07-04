@@ -58,10 +58,10 @@ extension Dictionary: GraphQLSerializable {
         serializedValue = "\(value)"
       }
       
-      return "\(key): \(serializedValue)"
-      }.joined(separator: ",")
+      return "\t\(key): \(serializedValue)"
+      }.joined(separator: ", \n")
     
-    return "{\(output)}"
+    return "{\n\(output)}"
   }
 }
 
