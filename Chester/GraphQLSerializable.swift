@@ -12,6 +12,15 @@ extension GraphQLSerializable {
   }
 }
 
+extension Double: GraphQLSerializable {
+  var asGraphQLString: String {
+    let numberFormatter = NumberFormatter()
+    numberFormatter.numberStyle = .decimal
+    numberFormatter.maximumFractionDigits = 10
+    return numberFormatter.string(from: self as NSNumber) ?? "0"
+  }
+}
+
 extension String: GraphQLSerializable {
   var asGraphQLString: String {
     return "\"" + escape(string: self) + "\""
