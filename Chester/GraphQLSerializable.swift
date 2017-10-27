@@ -17,6 +17,8 @@ extension Double: GraphQLSerializable {
     let numberFormatter = NumberFormatter()
     numberFormatter.numberStyle = .decimal
     numberFormatter.maximumFractionDigits = 10
+    numberFormatter.decimalSeparator = "."
+    numberFormatter.usesGroupingSeparator = false
     return numberFormatter.string(from: self as NSNumber) ?? "0"
   }
 }
